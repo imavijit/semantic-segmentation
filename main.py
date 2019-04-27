@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import QApplication,QWidget, QVBoxLayout, QPushButton, QFil
 import sys
 from PyQt5.QtGui import QPixmap
 import cv2
+import os
+from tkinter import *
 
 
 from lib.maskBorder import maskBorder
@@ -32,6 +34,10 @@ class Window(QWidget):
         vbox.addWidget(self.btn1)
         self.setLayout(vbox)
         self.show()
+
+    def on_scroll(x, y, dx, dy):
+        print('Scrolled {0}'.format('down' if dy < 0 else 'up'))
+
 
     def getImage(self):
         fname = QFileDialog.getOpenFileName(self, 'Open file','c:\\', "Image files (*.jpg *.gif *.png)")
